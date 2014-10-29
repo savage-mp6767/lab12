@@ -20,6 +20,7 @@ class MyApp:
 		self.myParent = parent  
 		self.myContainer1 = Frame(parent)
 		self.myContainer1.pack()
+		self.buttonState = True
 		
 		self.button1 = Button(self.myContainer1)
 		self.button1.configure(text="Left", background= "green")
@@ -31,12 +32,17 @@ class MyApp:
 		self.button1.bind("<Button-1>", self.button1Click) 
 		drawpad.pack(side=BOTTOM)
 		
-
-		
 	def button1Click(self, event):   
 		# Make me move to the left!
 		global oval
 		global drawpad
+		
+		self.buttonState = not self.buttonState
+		
+		if self.buttonState:
+		    self.button1.configure(text="Left")
+		else:
+		    self.button1.configure(text="Right")
 	
 	# Add the event handler for the second button!
 	
